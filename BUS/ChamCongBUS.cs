@@ -24,6 +24,7 @@ namespace BUS
                 SELECT 
                     ROW_NUMBER() OVER (ORDER BY c.Thang, c.Nam) AS STT,
                     c.MaCT AS MaChamCong, 
+                    nv.maNV AS MANV,
                     nv.tenNV AS TenNV, 
                     FORMAT(DATEFROMPARTS(c.Nam, c.Thang, 1), 'MM/yyyy') AS ThoiGianChamCong, 
                     c.SoNgayDiLam AS DiLam, 
