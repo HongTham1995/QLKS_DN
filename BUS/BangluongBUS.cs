@@ -28,5 +28,14 @@ namespace BUS
             DataTable dt = db.getList(query);
             return dt;
         }
+        public void updateBangLuong(string maBL, int soTien, DateTime ngayUpdate)
+        {
+            string query = $@"
+        UPDATE BANGLUONG
+        SET SoTien = {soTien}, Ngayupdate = '{ngayUpdate:dd/MM/yyyy}'
+        WHERE MaBL = '{maBL}'";
+
+            db.ExecuteNonQuery(query);
+        }
     }
 }

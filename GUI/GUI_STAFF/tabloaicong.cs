@@ -121,5 +121,26 @@ namespace GUI.GUI_STAFF
             message.ShowDialog("Thông báo", "Thành công", "Xóa loại công thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
             onload();
         }
+
+        private void buttonRounded1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                string maLC = txtmaLC.Text.Trim();
+                string tenLC = texttenLC.Text.Trim();
+                float heSo = textheso.Text.Trim() == "" ? 0 : float.Parse(textheso.Text.Trim());
+                DateTime ngayUpdate = DateTime.Now;
+
+                LoaicongBUS bus = new LoaicongBUS(); // ✅ tạo instance
+                bus.updateLoaiCong(maLC, tenLC, heSo, ngayUpdate); // ✅ gọi qua đối tượng
+
+                MessageBox.Show("Cập nhật thành công!");
+                onload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi khi cập nhật: " + ex.Message);
+            }
+        }
     }
 }

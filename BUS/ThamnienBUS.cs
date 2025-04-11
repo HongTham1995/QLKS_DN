@@ -55,5 +55,17 @@ namespace BUS
             string query = $"update TANGLUONG SET Xuly ={1} where MaTL = {maTL}";
             db.ExecuteNonQuery(query);
         }
+
+        public void updateTangLuong(int maTL, string soNam, float heSo, DateTime ngayUpdate)
+        {
+            string query = $@"
+        UPDATE TANGLUONG 
+        SET Sonam = N'{soNam}', 
+            Heso = {heSo}, 
+            Ngayupdate = '{ngayUpdate.ToString("dd/MM/yyyy")}' 
+        WHERE MaTL = {maTL}";
+
+            db.ExecuteNonQuery(query);
+        }
     }
 }

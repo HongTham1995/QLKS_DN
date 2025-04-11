@@ -45,7 +45,8 @@ namespace GUI.GUI_STAFF
                     string.Format("{0:N0} VND", dt.Rows[i][5]),
                     string.Format("{0:N0} VND", dt.Rows[i][6]),
                     string.Format("{0:N0} VND", dt.Rows[i][7]),
-                    string.Format("{0:N0} VND", dt.Rows[i][8])
+                    string.Format("{0:N0} VND", dt.Rows[i][8]),
+                    string.Format("{0:N0} VND", dt.Rows[i][9])
                     );
             }
         }
@@ -83,7 +84,8 @@ namespace GUI.GUI_STAFF
                         string.Format("{0:N0} VND", dt.Rows[i][5]),
                         string.Format("{0:N0} VND", dt.Rows[i][6]),
                         string.Format("{0:N0} VND", dt.Rows[i][7]),
-                        string.Format("{0:N0} VND", dt.Rows[i][8])
+                        string.Format("{0:N0} VND", dt.Rows[i][8]),
+                        string.Format("{0:N0} VND", dt.Rows[i][9])
                         );
                 }
                 tbLuong.ClearSelection();
@@ -131,7 +133,8 @@ namespace GUI.GUI_STAFF
                         string.Format("{0:N0} VND", row[5]),
                         string.Format("{0:N0} VND", row[6]),
                         string.Format("{0:N0} VND", row[7]),
-                        string.Format("{0:N0} VND", row[8])
+                        string.Format("{0:N0} VND", row[8]),
+                        string.Format("{0:N0} VND", row[9])
                     );
                 }
 
@@ -157,7 +160,8 @@ namespace GUI.GUI_STAFF
                 // Xác định cột cần sắp xếp
                 switch (cbSapXep.Text.Trim())
                 {
-                    case "Lương phụ cấp": sortColumn = "SoTien"; break;
+                    case "Lương cơ bản": sortColumn = "SoTienBL"; break;
+                    case "Lương phụ cấp": sortColumn = "SoTienPC"; break;
                     case "Lương thâm niên": sortColumn = "LuongThamNien"; break;
                     case "Lương thưởng": sortColumn = "LuongThuong"; break;
                     case "Khoản trừ": sortColumn = "KhoanTru"; break;
@@ -201,7 +205,8 @@ namespace GUI.GUI_STAFF
                         string.Format("{0:N0} VND", row[5]),
                         string.Format("{0:N0} VND", row[6]),
                         string.Format("{0:N0} VND", row[7]),
-                        string.Format("{0:N0} VND", row[8])
+                        string.Format("{0:N0} VND", row[8]),
+                        string.Format("{0:N0} VND", row[9])
                     );
                 }
 
@@ -246,7 +251,8 @@ namespace GUI.GUI_STAFF
                         string.Format("{0:N0} VND", row[5]),
                         string.Format("{0:N0} VND", row[6]),
                         string.Format("{0:N0} VND", row[7]),
-                        string.Format("{0:N0} VND", row[8])
+                        string.Format("{0:N0} VND", row[8]),
+                        string.Format("{0:N0} VND", row[9])
                     );
                 }
 

@@ -120,5 +120,32 @@ namespace GUI.GUI_STAFF
             message.ShowDialog("Thông báo", "Thành công", "Xóa loại thâm niên thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
             onload();
         }
+
+        private void buttonRounded1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                // Lấy dữ liệu từ các control
+                int maTL = int.Parse(txtMaTN.Text);
+                string soNam = textsonam.Text;
+                float heSo = float.Parse(textheso.Text);
+
+                // Ngày update là ngày hiện tại
+                DateTime ngayUpdate = DateTime.Now;
+
+                // Gọi hàm update trong BUS
+                ThamnienBUS bus = new ThamnienBUS(); // tạo mới BUS
+                bus.updateTangLuong(maTL, soNam, heSo, ngayUpdate);
+
+                // Reload lại datagrid
+                onload();
+
+                MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
