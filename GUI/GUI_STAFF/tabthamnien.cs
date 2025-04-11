@@ -117,7 +117,7 @@ namespace GUI.GUI_STAFF
                 thambienbus.deleteloaiTN(dataNhanVien.SelectedRows[i].Cells[1].Value.ToString());
             }
             MessageBoxDialog message = new MessageBoxDialog();
-            message.ShowDialog("Thông báo", "Thành công", "Xóa nhân viên thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
+            message.ShowDialog("Thông báo", "Thành công", "Xóa loại thâm niên thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
             onload();
         }
     }
