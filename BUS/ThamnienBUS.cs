@@ -43,8 +43,8 @@ namespace BUS
             ;
 
             // Tạo câu lệnh SQL đầy đủ
-            string query = $"INSERT INTO TANGLUONG (MaTL, Sonam, Heso, Ngayupdate) " +
-                           $"VALUES ({maTL}, {sonam}, '{heso}', '{ngayUpdate}')";
+            string query = $"INSERT INTO TANGLUONG (MaTL, Sonam, Heso, Ngayupdate,Xuly) " +
+                           $"VALUES ({maTL}, {sonam}, '{heso}', '{ngayUpdate}',0)";
 
             // Thực thi câu lệnh SQL
             db.ExecuteNonQuery(query);

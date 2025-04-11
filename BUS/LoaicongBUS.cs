@@ -42,8 +42,8 @@ namespace BUS
             string ngayUpdate = DateTime.Now.ToString("dd/MM/yyyy");
 
             // Tạo câu lệnh SQL đầy đủ
-            string query = $"INSERT INTO LOAICONG (MaLC, TenLC, Heso, Ngayupdate) " +
-                           $"VALUES ({maLC}, N'{tenlc}', '{loaiso}', '{ngayUpdate}')";
+            string query = $"INSERT INTO LOAICONG (MaLC, TenLC, Heso, Ngayupdate,Xuly) " +
+                           $"VALUES ({maLC}, N'{tenlc}', '{loaiso}', '{ngayUpdate}',0)";
 
             // Thực thi câu lệnh SQL
             db.ExecuteNonQuery(query);

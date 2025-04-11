@@ -56,12 +56,12 @@
             this.txtMaTN = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonRounded2 = new GUI.GUI_COMPONENT.ButtonRounded();
             this.buttonadd = new GUI.GUI_COMPONENT.ButtonRounded();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.buttonRounded2 = new GUI.GUI_COMPONENT.ButtonRounded();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -426,6 +426,28 @@
             this.panel5.Size = new System.Drawing.Size(304, 45);
             this.panel5.TabIndex = 0;
             // 
+            // buttonRounded2
+            // 
+            this.buttonRounded2.BackColor = System.Drawing.Color.Crimson;
+            this.buttonRounded2.BackgroundColor = System.Drawing.Color.Crimson;
+            this.buttonRounded2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonRounded2.BorderRadius = 30;
+            this.buttonRounded2.BorderSize = 0;
+            this.buttonRounded2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonRounded2.FlatAppearance.BorderSize = 0;
+            this.buttonRounded2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRounded2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRounded2.ForeColor = System.Drawing.Color.White;
+            this.buttonRounded2.ForegroundColor = System.Drawing.Color.White;
+            this.buttonRounded2.Location = new System.Drawing.Point(68, 0);
+            this.buttonRounded2.Margin = new System.Windows.Forms.Padding(2, 20, 2, 20);
+            this.buttonRounded2.Name = "buttonRounded2";
+            this.buttonRounded2.Size = new System.Drawing.Size(118, 45);
+            this.buttonRounded2.TabIndex = 13;
+            this.buttonRounded2.Text = "Xóa";
+            this.buttonRounded2.UseVisualStyleBackColor = false;
+            this.buttonRounded2.Click += new System.EventHandler(this.buttonRounded2_Click);
+            // 
             // buttonadd
             // 
             this.buttonadd.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -495,28 +517,6 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "CHỈNH SỬA PHỤ CẤP";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonRounded2
-            // 
-            this.buttonRounded2.BackColor = System.Drawing.Color.Crimson;
-            this.buttonRounded2.BackgroundColor = System.Drawing.Color.Crimson;
-            this.buttonRounded2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.buttonRounded2.BorderRadius = 30;
-            this.buttonRounded2.BorderSize = 0;
-            this.buttonRounded2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonRounded2.FlatAppearance.BorderSize = 0;
-            this.buttonRounded2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRounded2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRounded2.ForeColor = System.Drawing.Color.White;
-            this.buttonRounded2.ForegroundColor = System.Drawing.Color.White;
-            this.buttonRounded2.Location = new System.Drawing.Point(68, 0);
-            this.buttonRounded2.Margin = new System.Windows.Forms.Padding(2, 20, 2, 20);
-            this.buttonRounded2.Name = "buttonRounded2";
-            this.buttonRounded2.Size = new System.Drawing.Size(118, 45);
-            this.buttonRounded2.TabIndex = 13;
-            this.buttonRounded2.Text = "Xóa";
-            this.buttonRounded2.UseVisualStyleBackColor = false;
-            this.buttonRounded2.Click += new System.EventHandler(this.buttonRounded2_Click);
             // 
             // tabthamnien
             // 
