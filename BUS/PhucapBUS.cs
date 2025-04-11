@@ -31,5 +31,18 @@ namespace BUS
             return dt;
         }
 
+        public void updatePhuCap(int maPC, string soTien, DateTime ngayUpdate, string loaiPhuCap)
+        {
+            string query = $@"
+        UPDATE PHUCAP
+        SET 
+            SoTien = N'{soTien}', 
+            Ngayupdate = N'{ngayUpdate.ToString("dd/MM/yyyy")}', 
+            Loaiphucap = N'{loaiPhuCap}'
+        WHERE MaPC = {maPC}";
+
+            db.ExecuteNonQuery(query);
+        }
+
     }
 }

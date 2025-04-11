@@ -17,13 +17,17 @@ namespace BUS
         }
         public DataTable getListLuong()
         {
-            string query = "SELECT  NV.maNV, NV.tenNV, L.Thang, L.Nam, PC.SoTien, L.LuongThamNien, L.LuongThuong, L.KhoanTru, L.LuongThucTe " +
-                "FROM LUONG L " +
-                "JOIN NHANVIEN NV ON L.MAL = NV.MAL " +
-                "JOIN PHUCAP PC ON PC.MaPC = NV.MaPC";
-            DataTable dt = db.getList(query);
-            return dt;
+            string query = "SELECT NV.maNV, NV.tenNV, L.Thang, L.Nam, " +
+                           "BL.SoTien AS SoTienBL, PC.SoTien AS SoTienPC, " +
+                           "L.LuongThamNien, L.LuongThuong, L.KhoanTru, L.LuongThucTe " +
+                           "FROM LUONG L " +
+                           "JOIN NHANVIEN NV ON L.MAL = NV.MaL " +
+                           "JOIN PHUCAP PC ON PC.MaPC = NV.MaPC " +
+                           "JOIN BANGLUONG BL ON BL.MaBL = NV.MaBL";
+            return db.getList(query);
         }
+
+
 
         public DataTable GetAllLuong()
         {

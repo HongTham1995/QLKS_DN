@@ -84,5 +84,52 @@ namespace GUI.GUI_STAFF
                 }
             }
         }
+
+        private void buttonRounded4_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                string chucvuText = txtchucvu.Text.Trim();
+                int soTien = int.Parse(textsotien.Text.Trim());
+                DateTime ngayUpdate = DateTime.Now;
+
+                // Chuyển chức vụ về mã
+                string maBL;
+                switch (chucvuText)
+                {
+                    case "Quản lý":
+                        maBL = "0";
+                        break;
+                    case "Lễ tân":
+                        maBL = "1";
+                        break;
+                    case "Kế toán":
+                        maBL = "2";
+                        break;
+                    case "Bếp":
+                        maBL = "3";
+                        break;
+                    case "Phục vụ":
+                        maBL = "4";
+                        break;
+                    case "Bảo vệ":
+                        maBL = "5";
+                        break;
+                    default:
+                        throw new Exception("Chức vụ không hợp lệ.");
+                }
+
+                // Tạo mới đối tượng BUS tại đây
+                BangluongBUS bus = new BangluongBUS();
+                bus.updateBangLuong(maBL, soTien, ngayUpdate);
+
+                MessageBox.Show("Cập nhật bảng lương thành công!");
+                onload(); // Reload dữ liệu
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật: " + ex.Message);
+            }
+        }
     }
 }

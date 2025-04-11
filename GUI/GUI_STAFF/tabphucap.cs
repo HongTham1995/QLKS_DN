@@ -90,5 +90,48 @@ namespace GUI.GUI_STAFF
             }
         }
 
+        private void buttonRounded1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                // Xác định mã phụ cấp dựa vào chức vụ
+                string cv = txtchucvu.Text.Trim();
+                int maPC = -1;
+
+                switch (cv)
+                {
+                    case "Quản lý":
+                        maPC = 0; break;
+                    case "Lễ tân":
+                        maPC = 1; break;
+                    case "Kê toán":
+                        maPC = 2; break;
+                    case "Bếp":
+                        maPC = 3; break;
+                    case "Phục vụ":
+                        maPC = 4; break;
+                    case "Bảo vệ":
+                        maPC = 5; break;
+                    default:
+                        MessageBox.Show("Chức vụ không hợp lệ.");
+                        return;
+                }
+
+                string loaiPhuCap = txtloaiphucap.Text.Trim();
+                string soTien = txtmucphucap.Text.Trim();
+                DateTime ngayUpdate = DateTime.Now; // Lấy ngày hiện tại
+
+                // Tạo mới đối tượng BUS để gọi hàm update
+                PhucapBUS pcBus = new PhucapBUS();
+                pcBus.updatePhuCap(maPC, soTien, ngayUpdate, loaiPhuCap);
+
+                MessageBox.Show("Cập nhật phụ cấp thành công!");
+                onload(); // Refresh lại bảng sau khi cập nhật
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật phụ cấp: " + ex.Message);
+            }
+        }
     }
 }

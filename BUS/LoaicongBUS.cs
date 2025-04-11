@@ -55,5 +55,17 @@ namespace BUS
             db.ExecuteNonQuery(query);
         }
 
+        public void updateLoaiCong(string maLC, string tenLC, float heSo, DateTime ngayUpdate)
+        {
+            string query = $@"
+        UPDATE LOAICONG 
+        SET TenLC = N'{tenLC}', 
+            Heso = {heSo}, 
+            Ngayupdate = '{ngayUpdate:dd/MM/yyyy}' 
+        WHERE MaLC = '{maLC}'";
+
+            db.ExecuteNonQuery(query);
+        }
+
     }
 }
