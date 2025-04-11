@@ -1,4 +1,7 @@
 ﻿using BUS;
+using DotNetEnv;
+using DTO;
+using GUI.GUI_COMPONENT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,6 +75,51 @@ namespace GUI.GUI_STAFF
                     dataNhanVien.Rows[i].DefaultCellStyle.BackColor = Color.White;
                 }
             }
+        }
+
+        private void buttonRounded2_Click(object sender, EventArgs e)
+        {
+            Form form = new Form();
+            form.Text = "Thêm loại công";
+            form.Size = new Size(350, 250);
+            form.StartPosition = FormStartPosition.CenterScreen;
+
+            // Label & TextBox để nhập thông tin loại công
+            Label lbltenLC = new Label() { Text = "Tên loại công", Location = new Point(20, 20), AutoSize = true };
+            TextBox txttenLC = new TextBox() { Text = "", Location = new Point(120, 20), Width = 180, ReadOnly = false };
+
+            Label lblheso = new Label() { Text = "Hệ số:", Location = new Point(20, 60), AutoSize = true };
+            TextBox txtheso = new TextBox() { Text = "", Location = new Point(120, 60), Width = 180, ReadOnly = false };
+
+            Button btnXacNhan = new Button() { Text = "Thêm", Location = new Point(120, 180), Width = 80 };
+            btnXacNhan.Click += (s, ev) =>
+            {
+                // Gọi hàm thêm loại công với dữ liệu đã nhập
+                loaicongbus.Themloaicong(txttenLC.Text, txtheso.Text);
+                onload();
+                form.Close();
+            };
+
+            // Thêm các control vào form
+            form.Controls.Add(lbltenLC);
+            form.Controls.Add(txttenLC);
+            form.Controls.Add(lblheso);
+            form.Controls.Add(txtheso);
+            form.Controls.Add(btnXacNhan);
+
+            // Hiển thị form
+            form.ShowDialog();
+        }
+
+        private void buttonRounded3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataNhanVien.SelectedRows.Count; i++)
+            {
+                loaicongbus.deleteloaicong(dataNhanVien.SelectedRows[i].Cells[1].Value.ToString());
+            }
+            MessageBoxDialog message = new MessageBoxDialog();
+            message.ShowDialog("Thông báo", "Thành công", "Xóa nhân viên thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
+            onload();
         }
     }
 }
