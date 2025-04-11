@@ -24,88 +24,7 @@ namespace GUI.GUI_STAFF
            
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelRounded1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataChamCong_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void buttonRounded2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-
-        private void buttonRounded2_Click_1(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void btnChamCong_Click(object sender, EventArgs e)
         {
@@ -120,10 +39,7 @@ namespace GUI.GUI_STAFF
             dateNgayChamCong.CustomFormat = "dd/MM/yyyy";
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         public void LoadDataNV()
         {
@@ -162,24 +78,7 @@ namespace GUI.GUI_STAFF
         
 
 
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Load_Chamcong(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -192,10 +91,7 @@ namespace GUI.GUI_STAFF
             dateNgayChamCong.Value = DateTime.Now;
         }
 
-        private void btnReset_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
