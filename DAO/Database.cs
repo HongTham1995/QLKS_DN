@@ -127,25 +127,28 @@ namespace DAO
             conn.Open();
             SqlCommand cmd = new SqlCommand(query, conn);
             SqlDataReader reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 NhanVienDTO nv = new NhanVienDTO();
-                nv.MaNV = reader[0].ToString();
-                nv.TenNV = reader[1].ToString();
-                nv.MaL = int.Parse(reader[2].ToString());
-                nv.MaTL = int.Parse(reader[3].ToString());
-                nv.MaPC = int.Parse(reader[4].ToString());
-                nv.Luong = float.Parse(reader[5].ToString());
-                nv.GioiTinh = int.Parse(reader[6].ToString());
-                nv.SoNgayPhep = int.Parse(reader[7].ToString());
-                nv.ChucVu = int.Parse(reader[8].ToString());
-                nv.NgaySinh = DateTime.Parse(reader[9].ToString());
-                nv.NgayVaoLam = DateTime.Parse(reader[10].ToString());
-                nv.Email = reader[11].ToString();
-                nv.XuLy = int.Parse(reader[12].ToString());
+
+                nv.MaNV = reader[0]?.ToString();
+                nv.TenNV = reader[1]?.ToString();
+
+                nv.Luong = reader[2] != DBNull.Value ? float.Parse(reader[2].ToString()) : 0;
+
+                nv.GioiTinh = reader[3] != DBNull.Value ? Convert.ToInt32(reader[3]) : -1;
+                nv.SoNgayPhep = reader[4] != DBNull.Value ? Convert.ToInt32(reader[4]) : 0;
+                nv.ChucVu = reader[5] != DBNull.Value ? Convert.ToInt32(reader[5]) : -1;
+
+                nv.NgaySinh = reader[6] != DBNull.Value ? Convert.ToDateTime(reader[6]) : DateTime.MinValue;
+                nv.NgayVaoLam = reader[7] != DBNull.Value ? Convert.ToDateTime(reader[7]) : DateTime.MinValue;
+
+                nv.Email = reader[8]?.ToString();
+                nv.XuLy = reader[9] != DBNull.Value ? Convert.ToInt32(reader[9]) : 0;
 
                 list.Add(nv);
+
+                
             }
 
             conn.Close();
