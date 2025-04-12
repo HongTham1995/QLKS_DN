@@ -162,15 +162,15 @@ namespace GUI.GUI_STAFF
             {
                 var manv = dt.Rows[i][0].ToString();
                 var tennv = dt.Rows[i][1].ToString();
-                var gt = dt.Rows[i][6].ToString();
+                var gt = dt.Rows[i][3].ToString();
                 string gioitinh;
                 if (gt == "0")
                     gioitinh = "Nam";
                 else
                     gioitinh = "Nu";
-                var songayphep = dt.Rows[i][7].ToString();
+                var songayphep = dt.Rows[i][4].ToString();
                 string chucvu;
-                var cv = dt.Rows[i][8].ToString();
+                var cv = dt.Rows[i][5].ToString();
                 if (cv == "0")
                     chucvu = "Quản lý";
                 else if (cv == "1")
@@ -184,10 +184,10 @@ namespace GUI.GUI_STAFF
                 else 
                     chucvu = "Bảo vệ";
 
-                var ngaysinh = DateTime.Parse(dt.Rows[i][9].ToString().Split()[0]).ToString("dd/MM/yyyy");
-                var ngayvaolam = DateTime.Parse(dt.Rows[i][10].ToString().Split()[0]).ToString("dd/MM/yyyy");
-                var email = dt.Rows[i][11].ToString();
-                var luong = dt.Rows[i][5].ToString();
+                var ngaysinh = DateTime.Parse(dt.Rows[i][6].ToString().Split()[0]).ToString("dd/MM/yyyy");
+                var ngayvaolam = DateTime.Parse(dt.Rows[i][7].ToString().Split()[0]).ToString("dd/MM/yyyy");
+                var email = dt.Rows[i][8].ToString();
+                var luong = dt.Rows[i][2].ToString();
                 dataNhanVien.Rows.Add(stt, manv, tennv, gioitinh, ngaysinh, ngayvaolam, chucvu, songayphep, luong, email);
                 stt++;//*****
             }
@@ -206,15 +206,15 @@ namespace GUI.GUI_STAFF
             {
                 var manv = dt.Rows[i][0].ToString();
                 var tennv = dt.Rows[i][1].ToString();
-                var gt = dt.Rows[i][6].ToString();
+                var gt = dt.Rows[i][3].ToString();
                 string gioitinh;
                 if (gt == "0")
                     gioitinh = "Nam";
                 else
                     gioitinh = "Nu";
-                var songayphep = dt.Rows[i][7].ToString();
+                var songayphep = dt.Rows[i][4].ToString();
                 string chucvu;
-                var cv = dt.Rows[i][8].ToString();
+                var cv = dt.Rows[i][5].ToString();
                 if (cv == "0")
                     chucvu = "Quản lý";
                 else if (cv == "1")
@@ -223,10 +223,10 @@ namespace GUI.GUI_STAFF
                     chucvu = " Kê toán";
                 else
                     chucvu = "Bếp";
-                var ngaysinh = DateTime.Parse(dt.Rows[i][9].ToString().Split()[0]).ToString("dd/MM/yyyy");
-                var ngayvaolam = DateTime.Parse(dt.Rows[i][10].ToString().Split()[0]).ToString("dd/MM/yyyy");
-                var email = dt.Rows[i][11].ToString();
-                var luong = dt.Rows[i][5].ToString();
+                var ngaysinh = DateTime.Parse(dt.Rows[i][6].ToString().Split()[0]).ToString("dd/MM/yyyy");
+                var ngayvaolam = DateTime.Parse(dt.Rows[i][7].ToString().Split()[0]).ToString("dd/MM/yyyy");
+                var email = dt.Rows[i][8].ToString();
+                var luong = dt.Rows[i][2].ToString();
                 dataNhanVien.Rows.Add(stt, manv, tennv, gioitinh, ngaysinh, ngayvaolam, chucvu, songayphep, luong, email);
                 stt++;//*****
             }
@@ -1201,38 +1201,26 @@ namespace GUI.GUI_STAFF
 
             var strcv = usedRange.Cells[row, 7].Value2.ToString().Trim();
             int cv;
-            int MaL, MaTL, MaPC, MaBL;
+            
             if (string.Equals(strcv, "quản lý", StringComparison.OrdinalIgnoreCase))
             {
                 cv = 0;
-                MaL = 0;
-                MaTL = 0;
-                MaPC = 0;
-                MaBL = 0;
+                
             }
             else if (string.Equals(strcv, "lễ tân", StringComparison.OrdinalIgnoreCase))
             {
                 cv = 1;
-                MaL = 1;
-                MaTL = 1;
-                MaPC = 1;
-                MaBL = 1;
+                
             }
             else if (string.Equals(strcv, "kế toán", StringComparison.OrdinalIgnoreCase))
             {
                 cv = 2;
-                MaL = 2;
-                MaTL = 2;
-                MaPC = 2;
-                MaBL = 2;
+                
             }
             else if (string.Equals(strcv, "bếp", StringComparison.OrdinalIgnoreCase))
             {
                 cv = 3;
-                MaL = 3;
-                MaTL = 3;
-                MaPC = 3;
-                MaBL = 3;
+                
             }
             else
             {
@@ -1268,7 +1256,7 @@ namespace GUI.GUI_STAFF
             }
 
             var manv = getMaNV(gt, nvl);
-            nhanVienBUS.addNhanVien(manv, tennv,MaL,MaTL,MaPC,MaBL, gt, snp, cv, ns, nvl, email);
+            nhanVienBUS.addNhanVien(manv, tennv, gt, snp, cv, ns, nvl, email);
             refresh();
         }
 

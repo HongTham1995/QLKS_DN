@@ -1,4 +1,5 @@
 ﻿using BUS;
+using GUI.GUI_COMPONENT;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,8 @@ namespace GUI.GUI_STAFF
             int stt = 1;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                var cv = dt.Rows[i][0].ToString();
+                var mapc = dt.Rows[i][0].ToString();
+                var cv = dt.Rows[i][4].ToString();
                 string chucvu;
                 if (cv == "0")
                     chucvu = "Quản lý";
@@ -46,7 +48,7 @@ namespace GUI.GUI_STAFF
                 var sotien = dt.Rows[i][1].ToString();
                 
                 var ngayupdate = dt.Rows[i][2].ToString();
-                dataNhanVien.Rows.Add(stt, chucvu,loaiphucap,sotien,ngayupdate);
+                dataNhanVien.Rows.Add(stt,mapc, chucvu,loaiphucap,sotien,ngayupdate);
                 stt++;//*****
             }
             dataNhanVien.ClearSelection();
@@ -57,10 +59,10 @@ namespace GUI.GUI_STAFF
         {
             for (int i = 0; i < dataNhanVien.SelectedRows.Count; i++)
             {
-                string cv = dataNhanVien.SelectedRows[i].Cells[1].Value.ToString();
-                string loaiphucap = dataNhanVien.SelectedRows[i].Cells[2].Value.ToString();
-                string sotien = dataNhanVien.SelectedRows[i].Cells[3].Value.ToString();
-                string ngayupdate = dataNhanVien.SelectedRows[i].Cells[4].Value.ToString();
+                string cv = dataNhanVien.SelectedRows[i].Cells[2].Value.ToString();
+                string loaiphucap = dataNhanVien.SelectedRows[i].Cells[3].Value.ToString();
+                string sotien = dataNhanVien.SelectedRows[i].Cells[4].Value.ToString();
+                string ngayupdate = dataNhanVien.SelectedRows[i].Cells[5].Value.ToString();
                 var ngayhieuluc = DateTime.ParseExact(ngayupdate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 
@@ -132,6 +134,83 @@ namespace GUI.GUI_STAFF
             {
                 MessageBox.Show("Lỗi khi cập nhật phụ cấp: " + ex.Message);
             }
+        }
+
+        private void buttonadd_Click(object sender, EventArgs e)
+        {
+            Form form = new Form();
+            form.Text = "Thêm loại phụ cấp";
+            form.Size = new Size(350, 300);
+            form.StartPosition = FormStartPosition.CenterScreen;
+
+            // Label và ComboBox chọn chức vụ
+            Label lblChucVu = new Label() { Text = "Chức vụ:", Location = new Point(20, 20), AutoSize = true };
+            ComboBox cbChucVu = new ComboBox() { Location = new Point(120, 20), Width = 180 };
+            cbChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Thêm danh sách chức vụ vào ComboBox
+            Dictionary<string, string> chucVuDict = new Dictionary<string, string>
+    {
+        { "Quản lý", "0" },
+        { "Lễ tân", "1" },
+        { "Kế toán", "2" },
+        { "Bếp", "3" },
+        { "Phục vụ", "4" },
+        { "Bảo vệ", "5" }
+    };
+            cbChucVu.Items.AddRange(chucVuDict.Keys.ToArray());
+
+            // TextBox nhập tên loại phụ cấp
+            Label lblTenLoai = new Label() { Text = "Loại phụ cấp:", Location = new Point(20, 60), AutoSize = true };
+            TextBox txtTenLoai = new TextBox() { Location = new Point(120, 60), Width = 180 };
+
+            // TextBox nhập số tiền
+            Label lblSoTien = new Label() { Text = "Số tiền:", Location = new Point(20, 100), AutoSize = true };
+            TextBox txtSoTien = new TextBox() { Location = new Point(120, 100), Width = 180 };
+
+            // Button xác nhận
+            Button btnXacNhan = new Button() { Text = "Thêm", Location = new Point(120, 180), Width = 80 };
+            btnXacNhan.Click += (s, ev) =>
+            {
+                if (cbChucVu.SelectedItem != null)
+                {
+                    string tenChucVu = cbChucVu.SelectedItem.ToString();
+                    string maCV = chucVuDict[tenChucVu]; // Lấy mã chức vụ từ dict
+
+                    // Gọi hàm thêm phụ cấp
+                    phucapbus.add(maCV,txtTenLoai.Text,txtSoTien.Text);
+                    onload();
+                    form.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn chức vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            };
+
+            // Add controls vào form
+            form.Controls.Add(lblChucVu);
+            form.Controls.Add(cbChucVu);
+            form.Controls.Add(lblTenLoai);
+            form.Controls.Add(txtTenLoai);
+            form.Controls.Add(lblSoTien);
+            form.Controls.Add(txtSoTien);
+            form.Controls.Add(btnXacNhan);
+
+            form.ShowDialog();
+        }
+
+
+
+        private void buttonRounded2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataNhanVien.SelectedRows.Count; i++)
+            {
+                phucapbus.deleteloaiPC(dataNhanVien.SelectedRows[i].Cells[1].Value.ToString());
+            }
+            MessageBoxDialog message = new MessageBoxDialog();
+            message.ShowDialog("Thông báo", "Thành công", "Xóa loại thâm niên thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
+            onload();
         }
     }
 }

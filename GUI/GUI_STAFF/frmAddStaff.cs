@@ -248,13 +248,10 @@ namespace GUI.GUI_STAFF
                 var ngaysinh = dtpNgaySinh.Value;
                 var ngayvaolam = dtpNgayVaoLam.Value;
                 var email = txtEmail.Text;
-                var MaL= cbChucVu.SelectedIndex;
-                var MaPC= cbChucVu.SelectedIndex;
-                var MaBL= cbChucVu.SelectedIndex;
-                var MaTL= cbChucVu.SelectedIndex;
+                
                 if (this.isAdd)
                 {
-                    nhanVienBUS.addNhanVien(manv, tennv,MaL,MaTL,MaPC,MaBL, gioitinh, songayphep, chucvu, ngaysinh, ngayvaolam, email);
+                    nhanVienBUS.addNhanVien(manv, tennv, gioitinh, songayphep, chucvu, ngaysinh, ngayvaolam, email);
                     MessageBoxDialog message = new MessageBoxDialog();
                     message.ShowDialog("Thông báo", "Thành công", "Thêm nhân viên mới thành công", MessageBoxDialog.SUCCESS, MessageBoxDialog.YES, "Đóng", "", "");
                 }

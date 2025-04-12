@@ -30,15 +30,21 @@ namespace BUS
         public DataTable getNhanVien()
         {
             string query = @"
-        SELECT nv.MaNV, nv.TenNV, nv.MaL, nv.MaTL, nv.MaPC, 
-               bl.SoTien AS Luong, nv.GioiTinh, nv.SoNgayPhep, 
-               nv.ChucVu, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
-        FROM NhanVien nv
-        LEFT JOIN BANGLUONG bl ON nv.MaBL = bl.MaBL
-        WHERE nv.XuLy = 0";
+            SELECT 
+                nv.MaNV, nv.TenNV ,
+                bl.SoTien AS Luong, nv.GioiTinh, nv.SoNgayPhep, 
+                nv.MaCV, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
+            FROM NHANVIEN nv
+            JOIN CHUCVU cv ON nv.MaCV = cv.MaCV
+            JOIN BANGLUONG bl ON cv.MaCV = bl.MaCV
+            
+            
+            WHERE nv.XuLy = 0";
+
             DataTable dt = db.getList(query);
             return dt;
         }
+
 
 
         /// <summary>
@@ -63,7 +69,7 @@ namespace BUS
         /// <param name="ngayvaolam">Date of joining</param>
         /// <param name="email">Email address</param>
         /// <param name="luong1ngay">Daily salary</param>
-        public void addNhanVien(string manv, string tennv, int maL, int maTL, int maPC, int maBL,
+        public void addNhanVien(string manv, string tennv,
                         int gioiTinh, int soNgayPhep, int chucvu,
                         DateTime ngaysinh, DateTime ngayvaolam, string email)
         {
@@ -71,9 +77,9 @@ namespace BUS
             var nvl = ngayvaolam.ToString("yyyy-MM-dd");
 
             string query = string.Format(@"
-            INSERT INTO NHANVIEN (MaNV, TenNV, MaL, MaTL, MaPC, MaBL, GioiTinh, SoNgayPhep, ChucVu, NgaySinh, NgayVaoLam, Email, XuLy) 
-            VALUES ('{0}', N'{1}', {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}', '{10}', '{11}', 0)",
-                            manv, tennv, maL, maTL, maPC, maBL, gioiTinh, soNgayPhep, chucvu, ns, nvl, email);
+            INSERT INTO NHANVIEN (MaNV, TenNV, GioiTinh, SoNgayPhep, MaCV, NgaySinh, NgayVaoLam, Email, XuLy) 
+            VALUES ('{0}', N'{1}', {2}, {3}, {4}, '{5}', '{6}', N'{7}', 0)",
+                            manv, tennv, gioiTinh, soNgayPhep, chucvu, ns, nvl, email);
 
             db.ExecuteNonQuery(query);
         }
@@ -97,9 +103,14 @@ namespace BUS
         /// <returns>A DataTable containing the list of employees that match the search criteria</returns>
         public DataTable findNhanVien(string manv, string tennv, int gioitinh, int chucvu, string songayphep, string sotien, DateTime ngaysinhtu, DateTime ngaysinhden, DateTime ngayvaolamtu, DateTime ngayvaolamden, string email)
         {
-            var query = @"SELECT NV.* FROM NHANVIEN NV 
-                  JOIN BANGLUONG BL ON NV.MaBL = BL.MaBL 
-                  WHERE ";
+            var  query = @"SELECT 
+                 nv.MaNV, nv.TenNV ,
+                bl.SoTien AS Luong, nv.GioiTinh, nv.SoNgayPhep, 
+                nv.MaCV, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
+                FROM NHANVIEN nv
+                JOIN CHUCVU cv ON nv.MaCV = cv.MaCV
+                JOIN BANGLUONG bl ON cv.MaCV = bl.MaCV
+                     WHERE XuLy=0 and ";
 
             if (!string.IsNullOrEmpty(manv))
             {
@@ -115,7 +126,7 @@ namespace BUS
             }
             if (chucvu != -1)
             {
-                query += "NV.ChucVu = " + chucvu + " AND ";
+                query += "NV.MaCV = " + chucvu + " AND ";
             }
             if (!string.IsNullOrEmpty(songayphep))
             {
@@ -210,37 +221,41 @@ namespace BUS
             var nvl = ngayvaolam.Year + "-" + ngayvaolam.Month + "-" + ngayvaolam.Day;
             string query = string.Format(@"UPDATE NHANVIEN 
                                    SET TenNV = N'{1}', 
-                                       MaL = {2}, 
-                                       MaTL = {3}, 
-                                       MaPC = {4}, 
-                                       MaBL = {5}, 
-                                       GioiTinh = {6}, 
-                                       SoNgayPhep = {7}, 
-                                       ChucVu = {8}, 
-                                       NgaySinh = '{9}', 
-                                       NgayVaoLam = '{10}', 
-                                       Email = '{11}', 
+                                        
+                                       GioiTinh = {2}, 
+                                       SoNgayPhep = {3}, 
+                                       MaCV = {4}, 
+                                       NgaySinh = '{5}', 
+                                       NgayVaoLam = '{6}', 
+                                       Email = '{7}', 
                                        XuLy = 0
                                    WHERE MaNV = '{0}'",
-        manv, tennv,chucvu, chucvu, chucvu, chucvu, gioitinh, songayphep, chucvu, ns, nvl, email); 
+        manv, tennv, gioitinh, songayphep, chucvu, ns, nvl, email); 
             db.ExecuteNonQuery(query);
         }
         #region new
         public List<NhanVienDTO> getDSNhanVien()
         {
             string query = @"
-        SELECT nv.MaNV, nv.TenNV, nv.MaL, nv.MaTL, nv.MaPC, 
+        SELECT nv.MaNV, nv.TenNV,
                bl.SoTien AS Luong, nv.GioiTinh, nv.SoNgayPhep, 
-               nv.ChucVu, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
+               nv.MaCV, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
         FROM NhanVien nv
-        LEFT JOIN BANGLUONG bl ON nv.MaBL = bl.MaBL
+        JOIN CHUCVU cv ON nv.MaCV = cv.MaCV
+        JOIN BANGLUONG bl ON cv.MaCV = bl.MaCV
         WHERE nv.XuLy = 0";  // ✅ Chỉ lấy nhân viên chưa bị xóa
 
             return db.getListNV_DTO(query);
         }
         public List<NhanVienDTO> getAllDSNhanVien()
         {
-            string query = "select * from NhanVien";
+            string query = @"
+        SELECT nv.MaNV, nv.TenNV,
+               bl.SoTien AS Luong, nv.GioiTinh, nv.SoNgayPhep, 
+               nv.MaCV, nv.NgaySinh, nv.NgayVaoLam, nv.Email, nv.XuLy
+        FROM NhanVien nv
+        JOIN CHUCVU cv ON nv.MaCV = cv.MaCV
+        JOIN BANGLUONG bl ON cv.MaCV = bl.MaCV ";
             return db.getListNV_DTO(query);
         }
         public NhanVienDTO GetNV(string maNV)
