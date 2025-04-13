@@ -167,5 +167,19 @@ namespace BUS
 
             return 0; // Nếu không có dữ liệu
         }
+        public bool KiemTraLuongDaTinh(string maNV, int thang, int nam)
+        {
+            string query = string.Format("SELECT COUNT(*) AS SoLuong FROM LUONG WHERE MaNV = '{0}' AND Thang = '{1}' AND Nam = '{2}'", maNV, thang, nam);
+            DataTable dt = db.getList(query);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int.TryParse(dt.Rows[0]["SoLuong"].ToString(), out int count);
+                return count > 0;
+            }
+
+            return false;
+        }
+
     }
 }
