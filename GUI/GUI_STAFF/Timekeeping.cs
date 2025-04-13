@@ -131,7 +131,6 @@ namespace GUI.GUI_STAFF
             {
                 DataGridViewRow row = dataChamCong.SelectedRows[0];
 
-                // Lấy dữ liệu từ các cột
                 string maChamCong = row.Cells["MaChamCong"].Value?.ToString();
                 string maNhanVien = row.Cells["MANV"].Value?.ToString();
                 string tenNhanVien = row.Cells["TenNV"].Value?.ToString();
@@ -151,6 +150,15 @@ namespace GUI.GUI_STAFF
                     return;
                 }
 
+                LuongBUS luongBUS = new LuongBUS();
+
+                // ✅ Kiểm tra nếu đã tính lương cho nhân viên trong tháng/năm
+                if (luongBUS.KiemTraLuongDaTinh(maNhanVien, thang, nam))
+                {
+                    MessageBox.Show($"Nhân viên {tenNhanVien} đã được tính lương cho tháng {thang}/{nam}.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 int diLam = int.Parse(row.Cells["DiLam"].Value?.ToString() ?? "0");
                 int diTre = int.Parse(row.Cells["DiTre"].Value?.ToString() ?? "0");
                 int nghiPhep = int.Parse(row.Cells["NghiPhep"].Value?.ToString() ?? "0");
@@ -158,7 +166,6 @@ namespace GUI.GUI_STAFF
                 int lamNgayNghi = int.Parse(row.Cells["LamNgayNghi"].Value?.ToString() ?? "0");
                 int lamNgayLe = int.Parse(row.Cells["LamNgayLe"].Value?.ToString() ?? "0");
 
-                LuongBUS luongBUS = new LuongBUS();
                 double luongCoBan = luongBUS.getLuongCoBan(maNhanVien);
                 double luongNgay = luongCoBan / 30;
                 double luongThang = luongNgay * diLam;
@@ -179,11 +186,9 @@ namespace GUI.GUI_STAFF
 
                 double luongThucTe = luongThang + phuCap + thamNien + luongThuong - tongKhoanTru;
 
-                // Thêm vào DB
                 int maL = luongBUS.getMaxMaL() + 1;
                 luongBUS.insertLuong(maL, thang.ToString(), nam.ToString(), thamNien.ToString(), luongThuong.ToString(), tongKhoanTru.ToString(), luongThucTe.ToString(), maNhanVien.ToString());
 
-                // Hiện thông báo
                 MessageBox.Show(
                     $"Tính lương thành công!\n\n" +
                     $"Mã lương: {maL}\n" +
@@ -202,6 +207,7 @@ namespace GUI.GUI_STAFF
                 MessageBox.Show("Vui lòng chọn một dòng trong bảng chấm công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
 
 
