@@ -15,8 +15,8 @@ namespace DAO
         SqlDataAdapter da;
         DataSet ds;
 
-        public string serverName = "ASUS\\SERVER01";
-        public string dbName = "QLKS_DN1";
+        public string serverName = "HONGTHAM2004";
+        public string dbName = "QLKS_DN";
         public string userName = "sa";
         public string password = "123456";
 
