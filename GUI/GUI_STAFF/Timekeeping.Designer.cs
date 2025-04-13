@@ -45,6 +45,7 @@ namespace GUI.GUI_STAFF
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonTinhluong = new GUI.GUI_COMPONENT.ButtonRounded();
             this.btnChamCong = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelRounded1 = new GUI.GUI_COMPONENT.PanelRounded();
@@ -81,7 +82,6 @@ namespace GUI.GUI_STAFF
             this.NghiKhongPhep = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LamNgayNghi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LamNgayLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonTinhluong = new GUI.GUI_COMPONENT.ButtonRounded();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelRounded1.SuspendLayout();
@@ -107,7 +107,7 @@ namespace GUI.GUI_STAFF
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 21);
+            this.label1.Size = new System.Drawing.Size(198, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "BẢNG CHẤM CÔNG";
             // 
@@ -122,6 +122,27 @@ namespace GUI.GUI_STAFF
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1894, 51);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonTinhluong
+            // 
+            this.buttonTinhluong.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonTinhluong.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonTinhluong.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.buttonTinhluong.BorderRadius = 40;
+            this.buttonTinhluong.BorderSize = 0;
+            this.buttonTinhluong.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonTinhluong.FlatAppearance.BorderSize = 0;
+            this.buttonTinhluong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTinhluong.ForeColor = System.Drawing.Color.White;
+            this.buttonTinhluong.ForegroundColor = System.Drawing.Color.White;
+            this.buttonTinhluong.Location = new System.Drawing.Point(1614, 0);
+            this.buttonTinhluong.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
+            this.buttonTinhluong.Name = "buttonTinhluong";
+            this.buttonTinhluong.Size = new System.Drawing.Size(140, 51);
+            this.buttonTinhluong.TabIndex = 13;
+            this.buttonTinhluong.Text = "Tính lương";
+            this.buttonTinhluong.UseVisualStyleBackColor = false;
+            this.buttonTinhluong.MouseClick += new System.Windows.Forms.MouseEventHandler(this.buttonTinhluong_MouseClick);
             // 
             // btnChamCong
             // 
@@ -212,10 +233,10 @@ namespace GUI.GUI_STAFF
             this.dateNgayChamCong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateNgayChamCong.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateNgayChamCong.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateNgayChamCong.Location = new System.Drawing.Point(110, 15);
+            this.dateNgayChamCong.Location = new System.Drawing.Point(137, 15);
             this.dateNgayChamCong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateNgayChamCong.Name = "dateNgayChamCong";
-            this.dateNgayChamCong.Size = new System.Drawing.Size(250, 26);
+            this.dateNgayChamCong.Size = new System.Drawing.Size(223, 30);
             this.dateNgayChamCong.TabIndex = 4;
             // 
             // label6
@@ -225,7 +246,7 @@ namespace GUI.GUI_STAFF
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(0, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 23);
+            this.label6.Size = new System.Drawing.Size(137, 28);
             this.label6.TabIndex = 0;
             this.label6.Text = "Ngày chấm công";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -247,9 +268,9 @@ namespace GUI.GUI_STAFF
             // 
             this.txtMaChamCong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMaChamCong.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.txtMaChamCong.Location = new System.Drawing.Point(108, 15);
+            this.txtMaChamCong.Location = new System.Drawing.Point(134, 15);
             this.txtMaChamCong.Name = "txtMaChamCong";
-            this.txtMaChamCong.Size = new System.Drawing.Size(243, 26);
+            this.txtMaChamCong.Size = new System.Drawing.Size(217, 30);
             this.txtMaChamCong.TabIndex = 1;
             // 
             // label5
@@ -259,7 +280,7 @@ namespace GUI.GUI_STAFF
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(0, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 23);
+            this.label5.Size = new System.Drawing.Size(134, 28);
             this.label5.TabIndex = 0;
             this.label5.Text = "Mã chấm công:  ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -310,10 +331,10 @@ namespace GUI.GUI_STAFF
             // 
             this.txtTenNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTenNhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenNhanVien.Location = new System.Drawing.Point(95, 15);
+            this.txtTenNhanVien.Location = new System.Drawing.Point(118, 15);
             this.txtTenNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenNhanVien.Name = "txtTenNhanVien";
-            this.txtTenNhanVien.Size = new System.Drawing.Size(301, 26);
+            this.txtTenNhanVien.Size = new System.Drawing.Size(278, 30);
             this.txtTenNhanVien.TabIndex = 1;
             // 
             // label4
@@ -323,7 +344,7 @@ namespace GUI.GUI_STAFF
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(0, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 23);
+            this.label4.Size = new System.Drawing.Size(118, 28);
             this.label4.TabIndex = 0;
             this.label4.Text = "Tên nhân viên:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -345,10 +366,10 @@ namespace GUI.GUI_STAFF
             // 
             this.txtMaNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMaNhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNhanVien.Location = new System.Drawing.Point(96, 15);
+            this.txtMaNhanVien.Location = new System.Drawing.Point(118, 15);
             this.txtMaNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
-            this.txtMaNhanVien.Size = new System.Drawing.Size(245, 26);
+            this.txtMaNhanVien.Size = new System.Drawing.Size(223, 30);
             this.txtMaNhanVien.TabIndex = 1;
             // 
             // label2
@@ -358,7 +379,7 @@ namespace GUI.GUI_STAFF
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 19);
+            this.label2.Size = new System.Drawing.Size(118, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã nhân viên:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -513,7 +534,7 @@ namespace GUI.GUI_STAFF
             this.STT.MinimumWidth = 6;
             this.STT.Name = "STT";
             this.STT.ReadOnly = true;
-            this.STT.Width = 70;
+            this.STT.Width = 84;
             // 
             // MaChamCong
             // 
@@ -525,16 +546,17 @@ namespace GUI.GUI_STAFF
             this.MaChamCong.MinimumWidth = 6;
             this.MaChamCong.Name = "MaChamCong";
             this.MaChamCong.ReadOnly = true;
-            this.MaChamCong.Width = 171;
+            this.MaChamCong.Width = 211;
+            // 
             // MANV
+            // 
             this.MANV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MANV.DataPropertyName = "MANV"; 
+            this.MANV.DataPropertyName = "MANV";
             this.MANV.HeaderText = "MÃ NHÂN VIÊN";
             this.MANV.MinimumWidth = 6;
             this.MANV.Name = "MANV";
             this.MANV.ReadOnly = true;
-            this.MANV.Width = 150;
-
+            this.MANV.Width = 201;
             // 
             // TenNV
             // 
@@ -546,7 +568,7 @@ namespace GUI.GUI_STAFF
             this.TenNV.MinimumWidth = 6;
             this.TenNV.Name = "TenNV";
             this.TenNV.ReadOnly = true;
-            this.TenNV.Width = 169;
+            this.TenNV.Width = 207;
             // 
             // ThoiGianChamCong
             // 
@@ -558,7 +580,7 @@ namespace GUI.GUI_STAFF
             this.ThoiGianChamCong.MinimumWidth = 6;
             this.ThoiGianChamCong.Name = "ThoiGianChamCong";
             this.ThoiGianChamCong.ReadOnly = true;
-            this.ThoiGianChamCong.Width = 227;
+            this.ThoiGianChamCong.Width = 283;
             // 
             // DiLam
             // 
@@ -570,7 +592,7 @@ namespace GUI.GUI_STAFF
             this.DiLam.MinimumWidth = 6;
             this.DiLam.Name = "DiLam";
             this.DiLam.ReadOnly = true;
-            this.DiLam.Width = 98;
+            this.DiLam.Width = 119;
             // 
             // DiTre
             // 
@@ -582,7 +604,7 @@ namespace GUI.GUI_STAFF
             this.DiTre.MinimumWidth = 6;
             this.DiTre.Name = "DiTre";
             this.DiTre.ReadOnly = true;
-            this.DiTre.Width = 92;
+            this.DiTre.Width = 112;
             // 
             // NghiPhep
             // 
@@ -594,7 +616,7 @@ namespace GUI.GUI_STAFF
             this.NghiPhep.MinimumWidth = 6;
             this.NghiPhep.Name = "NghiPhep";
             this.NghiPhep.ReadOnly = true;
-            this.NghiPhep.Width = 129;
+            this.NghiPhep.Width = 156;
             // 
             // NghiKhongPhep
             // 
@@ -606,7 +628,7 @@ namespace GUI.GUI_STAFF
             this.NghiKhongPhep.MinimumWidth = 6;
             this.NghiKhongPhep.Name = "NghiKhongPhep";
             this.NghiKhongPhep.ReadOnly = true;
-            this.NghiKhongPhep.Width = 191;
+            this.NghiKhongPhep.Width = 235;
             // 
             // LamNgayNghi
             // 
@@ -618,7 +640,7 @@ namespace GUI.GUI_STAFF
             this.LamNgayNghi.MinimumWidth = 6;
             this.LamNgayNghi.Name = "LamNgayNghi";
             this.LamNgayNghi.ReadOnly = true;
-            this.LamNgayNghi.Width = 170;
+            this.LamNgayNghi.Width = 209;
             // 
             // LamNgayLe
             // 
@@ -630,31 +652,11 @@ namespace GUI.GUI_STAFF
             this.LamNgayLe.MinimumWidth = 6;
             this.LamNgayLe.Name = "LamNgayLe";
             this.LamNgayLe.ReadOnly = true;
-            this.LamNgayLe.Width = 146;
-            // 
-            // buttonTinhluong
-            // 
-            this.buttonTinhluong.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonTinhluong.BackgroundColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonTinhluong.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.buttonTinhluong.BorderRadius = 40;
-            this.buttonTinhluong.BorderSize = 0;
-            this.buttonTinhluong.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonTinhluong.FlatAppearance.BorderSize = 0;
-            this.buttonTinhluong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTinhluong.ForeColor = System.Drawing.Color.White;
-            this.buttonTinhluong.ForegroundColor = System.Drawing.Color.White;
-            this.buttonTinhluong.Location = new System.Drawing.Point(1614, 0);
-            this.buttonTinhluong.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
-            this.buttonTinhluong.Name = "buttonTinhluong";
-            this.buttonTinhluong.Size = new System.Drawing.Size(140, 51);
-            this.buttonTinhluong.TabIndex = 13;
-            this.buttonTinhluong.Text = "Tính lương";
-            this.buttonTinhluong.UseVisualStyleBackColor = false;
+            this.LamNgayLe.Width = 179;
             // 
             // Timekeeping
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1924, 788);
